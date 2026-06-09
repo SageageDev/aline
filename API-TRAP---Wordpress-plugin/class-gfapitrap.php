@@ -365,7 +365,7 @@ class GFAPITrap extends GFFeedAddOn {
                       $display === '1' || $display === 'true';
         $is_local   = strpos( $campaign, 'local' ) !== false || strpos( $medium, 'local' ) !== false;
 
-        $paid_mediums = [ 'cpc','ppc','sem','paid','paid_search','paidsearch','paid-social','paidsocial','paid social','display','banner','programmatic' ];
+        $paid_mediums = [ 'cpc','ppc','sem','paid','paid_search','paidsearch','paid-social','paidsocial','paid_social','paid social','display','banner','programmatic' ];
         $looks_paid   = in_array( $medium, $paid_mediums ) ||
                         strpos( $medium, 'paid' ) !== false ||
                         strpos( $medium, 'cpc' )  !== false ||
@@ -386,6 +386,8 @@ class GFAPITrap extends GFFeedAddOn {
         }
 
         if ( $is_email ) return 'Email';
+
+        if ( $medium === 'referral' ) return 'WEB - Referral Web Traffic';
 
         if ( $looks_paid && ( strpos( $medium, 'cpc' ) !== false || strpos( $medium, 'ppc' ) !== false || strpos( $medium, 'sem' ) !== false || strpos( $medium, 'paid_search' ) !== false || strpos( $medium, 'paidsearch' ) !== false ) ) {
             return 'WEB - Paid Search';

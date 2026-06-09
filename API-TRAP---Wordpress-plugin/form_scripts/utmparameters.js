@@ -9,7 +9,7 @@
   function looksPaid(m) {
     m = (m || '').toLowerCase();
     return (
-      ['cpc','ppc','sem','paid','paid_search','paidsearch','paid-social','paidsocial','paid social','display','banner','programmatic']
+      ['cpc','ppc','sem','paid','paid_search','paidsearch','paid-social','paidsocial','paid_social','paid social','display','banner','programmatic']
         .includes(m) ||
       m.includes('paid') || m.includes('cpc') || m.includes('ppc')
     );
@@ -55,6 +55,8 @@
     }
 
     if (isEmail) return 'Email';
+
+    if (utm_medium === 'referral') return 'WEB - Referral Web Traffic';
 
     if (looksPaid(utm_medium) && (utm_medium.includes('cpc') || utm_medium.includes('ppc') || utm_medium.includes('sem') || utm_medium.includes('paid_search') || utm_medium.includes('paidsearch'))) {
       return 'WEB - Paid Search';
