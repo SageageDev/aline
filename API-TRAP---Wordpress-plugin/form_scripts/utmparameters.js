@@ -86,8 +86,6 @@
       return 'WEB - 3rd Party Display';
     }
 
-    if (getParam('utm_source') || getParam('utm_medium') || getParam('utm_campaign')) return 'Internet';
-
     return 'WEB - Company Website';
   }
 
